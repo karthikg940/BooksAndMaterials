@@ -1,0 +1,339 @@
+.backgroundImg{
+    background-image: url("../images/main_back_ground2.png");  
+    padding:0px;
+    background-attachment:fixed;
+}
+
+
+/*---------------Login Page starts here----------------*/
+
+.maincont{
+	 
+   width:100%;
+    height:1000px;
+    padding:0px;
+    margin:0px;
+    background-color: #000;
+    background:  url("../images/main_back_ground2.png") no-repeat center center; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    overflow:hidden; 
+}
+.vertical-offset-100{
+    margin-top:75px;
+    padding:0px;
+    margin-rights:0px;
+}
+.logo{
+    height:100px;
+}
+
+.logo-img{
+     position: relative;
+    top: 30px;
+    width: 20%;
+    float: right;
+    right: 4%;
+}
+
+.logindiv .user-row{
+    text-align: center;
+    font-size: 30px;
+}
+.login .img-responsive {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: auto;
+}
+.logindiv {
+    margin-bottom: 20px;
+    background-color:  rgba(17, 44, 92, 0.8);
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    width:80%;
+}
+.rememberme label{
+    display: block;
+    width: 100%;
+    color: #fff;
+    text-shadow:#4cae4c;
+    text-align: left;
+}
+.login hr{
+    margin: 5px;
+}
+
+.logindiv > .panel-heading{
+    color:#fff;
+    background-color:transparent;
+    padding-top:30px;
+    border-color: rgb(134, 152, 183);
+}
+.register{
+    color:#fff;
+    text-align:center;
+    padding-top:10px;
+    padding-bottom:20px;
+}
+.register a:focus, a:hover{
+    text-decoration: none;
+    color:rgba(51, 122, 183, 1);
+}
+.rem{
+    position:relative;
+    left:2%;
+    color:#fff;
+    font-weight:100;
+}
+.chk_box{
+    outline:none;
+    border:none;
+}
+#ename:focus,#pass:focus {
+    outline-color:#333; 
+    box-shadow:2px 2px 5px rgb(167, 182, 213);
+}
+.loginbtn.btn.btn-lg.btn-block{
+    background: linear-gradient(rgb(67, 78, 22),rgb(83, 99, 16));
+    border:none;
+    color:#fff;
+}
+.loginbtn.btn.btn-lg.btn-block:visited,.loginbtn.btn.btn-lg.btn-block:hover,.loginbtn.btn.btn-lg.btn-block:active{
+        background: linear-gradient(rgb(94, 109, 31),rgb(97, 115, 18));
+}
+#ename{
+    color:#fff;
+    background-color: rgba(11, 35, 77, 0.8);
+    border: none;
+}
+#pass{
+    color:#fff;
+    background-color: rgba(11, 35, 77, 0.8);
+    border: none;
+}
+.textbox{
+    margin-left: 10%;
+    background-color:  rgba(17, 44, 92, 0.8);
+    height: 340px;
+    margin-top: 0px;
+    border-radius: 5px;
+    padding: 10px;
+    color: #fff;
+}
+/*-----------------Login Page ends here-----------------*/
+
+.col{
+    background-color: #fff;
+}
+.appname{
+    font-size: 500%;
+    color:rgba(61, 108, 184, 1);
+    font-family:sans-serif;
+}
+.virtusaLogo{
+    position:relative;
+    top:40px;
+    width:40%;
+    float:right;
+}
+.navbar-inverse{ 
+    background:linear-gradient(rgba(81, 115, 169, 1),rgba(52, 76, 117, 1));
+    color:white;
+    font-weight: bold;
+    border:0px solid black;
+}
+.spanstyle{
+	margin-right:10px;
+}
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover{
+    background-color:white;
+    color:rgba(80, 113, 166, 1);
+    -webkit-box-shadow: 0px -2px 5px 1px rgba(51,51,51,1);
+    -moz-box-shadow: 0px -2px 5px 1px rgba(51,51,51,1);
+    box-shadow: 0px -2px 5px 1px rgba(51,51,51,1);
+}
+.navbar-inverse .navbar-nav > li > a{
+    color:white;
+}
+.navbar-inverse .navbar-brand{
+    color:white;
+}
+.navbar-inverse .navbar-nav>.active>a:hover{
+     background-color:rgba(61, 108, 184, 1);
+    color:white;
+}
+#indexwell{
+    background-color:rgba(50, 75, 115, 0.7);
+    color:#fff;
+    border:none;
+}
+
+#homeicon{
+	font-size:100%;
+	aria-hidden="true"
+
+}
+.modal-header{
+    background:linear-gradient(rgba(81, 115, 169, 1),rgba(52, 76, 117, 1));
+    color: white;
+}
+.close:focus, .close:hover,a{
+    color: white;
+}
+.line{
+    line-height: 30px;
+}
+
+a:focus, a:hover{
+    color:white;
+    outline:none;
+    border:none;
+}
+
+.popup .form-control{
+    width:70%;
+    float:right;
+}
+.footer .btn-default{
+    color:white;
+    background-color:#415d8c;
+}
+.navbar-inverse .navbar-nav > li > a:hover{
+    background-color:rgba(81, 115, 169, 1);   
+}
+.heading{
+	font-size:24px;
+}
+.searchbtn{
+    margin-left:17%;
+}
+
+.seaticon{
+    margin-left:2%;
+    font-size:24px;
+}
+.button{
+	    padding: 20px 40px;
+	    margin-left: 30px;
+	    margin-top: 150px;
+}
+.logopanel
+{
+	margin-top:100px;
+}
+
+.loginbtn{
+	   background-color:#415d8c;
+}
+.logindiv > .panel-heading{
+    color:#fff;
+       background-color:#506890;
+    padding-top:30px;
+    border-color: rgb(208, 213, 232);
+}
+
+#ename:focus,#pass:focus {
+    outline-color:#333; 
+    box-shadow:2px 2px 5px rgba(45, 29, 5, 0.8);
+}
+.loginbtn.btn.btn-lg.btn-block{
+  /*   background: linear-gradient(rgb(67, 78, 22),rgb(83, 99, 16)); */
+   background-color:#415d8c
+    border:none;
+    color:#fff;
+    border-radius: 9px;
+       
+}
+.loginbtn.btn.btn-lg.btn-block:visited,.loginbtn.btn.btn-lg.btn-block:hover,.loginbtn.btn.btn-lg.btn-block:active{
+     /*    background: linear-gradient(rgb(94, 109, 31),rgb(97, 115, 18)); */
+         background-color:#415d8c
+}
+
+.seat{
+	margin-left:2%;
+}
+.appname #subscript{
+ font-size:30%;
+}
+
+.seatmargin
+{
+padding-top: 7px;
+
+}
+#added{
+	margin-left:88%;
+}
+#batchsearch{
+	margin-left:85%;
+}
+.batchpopup{
+	width:100%;
+}
+#batchadd{
+   margin-left: 80%;
+}
+.dataTables_empty
+{
+	color:red;
+}
+
+td
+{
+	color:#000;
+}
+table.dataTable tbody tr {
+	
+}
+table.dataTable tbody td
+{
+	border-bottom:0.2px solid black;
+	
+}
+
+#example_info{
+	color:#000;
+}
+#example_previous
+{
+	color:#fff;
+}
+label
+{
+	color:#fff;
+}
+.control-label
+{
+	color:#fff;
+}
+select
+{
+	color:#000;
+}
+
+table.dataTable tbody td
+{
+	background-color: rgba(118,143,184,0.3);
+}
+
+input
+{
+	color:#000;
+}
+
+tr
+{
+	color:fff;
+	
+}
+.label-style{
+	color:#615959;
+}
+
+	

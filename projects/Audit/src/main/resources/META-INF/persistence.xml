@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<persistence version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+             http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+
+
+	<persistence-unit name="llyEda_PU1" transaction-type="RESOURCE_LOCAL">
+		<!-- <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider> -->
+
+		<provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
+
+		<class>com.virtusa.audit.eda.entity.LoadAuditEntity</class>
+
+		<properties>
+			<!-- <property name="javax.persistence.jdbc.driver" value="oracle.jdbc.driver.OracleDriver" 
+				/> <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@10.5.112.106:1521:XE" 
+				/> <property name="javax.persistence.jdbc.user" value="LLY_EDA" /> <property 
+				name="javax.persistence.jdbc.password" value="LLY_EDA" /> <property name="hibernate.dialect" 
+				value="org.hibernate.dialect.OracleDialect" /> <property name="hibernate.hbm2ddl.auto" 
+				value="update" /> -->
+				
+					<property name="openjpa.ConnectionURL" value="jdbc:mysql://localhost:3306/test" />
+			<property name="openjpa.ConnectionDriverName" value="com.mysql.jdbc.Driver" />
+			<property name="openjpa.ConnectionUserName" value="root" />
+			<property name="openjpa.ConnectionPassword" value="root" />
+			<property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema" /> 
+			<property name="openjpa.Log" value="DefaultLevel=WARN, Tool=INFO" />
+			<property name="javax.persistence.jdbc.driver" value="oracle.jdbc.driver.OracleDriver" />
+				
+				
+<!-- 			<property name="openjpa.ConnectionURL" value="jdbc:oracle:thin:@10.5.112.106:1521:xe" /> -->
+<!-- 			<property name="openjpa.ConnectionDriverName" value="oracle.jdbc.driver.OracleDriver" /> -->
+<!-- 			<property name="openjpa.ConnectionUserName" value="LLY_EDA" /> -->
+<!-- 			<property name="openjpa.ConnectionPassword" value="LLY_EDA" /> -->
+<!-- 			<property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema" /> -->
+<!-- 			<property name="openjpa.Log" value="DefaultLevel=WARN, Tool=INFO" /> -->
+<!-- 			<property name="javax.persistence.jdbc.driver" value="oracle.jdbc.driver.OracleDriver" /> -->
+		</properties>
+	</persistence-unit>
+</persistence> 

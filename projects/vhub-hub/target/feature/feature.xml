@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.4.0" name="vhub-hub">
+    <feature name="vhub-hub" description="vHub Services" version="0.0.1.SNAPSHOT">
+        <details>vHub Services</details>
+        <feature prerequisite="true" dependency="false">wrap</feature>
+        <bundle start-level="70">mvn:com.virtusa.vhub/vhub-hub/0.0.1-SNAPSHOT</bundle>
+        <bundle start-level="70">mvn:org.apache.commons/commons-csv/1.4</bundle>
+        <bundle start-level="70">mvn:org.apache.camel/camel-xmljson/2.16.3</bundle>
+        <bundle start-level="70">wrap:mvn:net.sf.json-lib/json-lib/2.4/jar/jdk15</bundle>
+        <bundle start-level="70">mvn:commons-beanutils/commons-beanutils/1.8.0</bundle>
+        <bundle start-level="70">mvn:commons-collections/commons-collections/3.2.1</bundle>
+        <bundle start-level="70">wrap:mvn:net.sf.ezmorph/ezmorph/1.0.6</bundle>
+        <bundle start-level="70">mvn:commons-lang/commons-lang/2.6</bundle>
+        <bundle start-level="70">mvn:org.apache.camel/camel-csv/2.16.3</bundle>
+        <bundle start-level="70">wrap:mvn:com.googlecode.json-simple/json-simple/1.1</bundle>
+    </feature>
+</features>

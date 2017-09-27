@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.4.0" name="vhub-partner-1">
+    <feature name="vhub-partner-1" description="vHub Partner 1" version="0.0.1.SNAPSHOT">
+        <details>vHub Partner 1</details>
+        <bundle start-level="70">mvn:com.virtusa.vhub/vhub-partner-1/0.0.1-SNAPSHOT</bundle>
+    </feature>
+</features>

@@ -1,0 +1,5 @@
+com\virtusa\vhub\consumer3\CommandMessageListener.class
+com\virtusa\vhub\consumer3\CommandExecutorImpl.class
+com\virtusa\vhub\consumer3\CommandExecutorInterface.class
+com\virtusa\vhub\consumer3\CommandMessages.class
+com\virtusa\vhub\consumer3\CommandSender.class

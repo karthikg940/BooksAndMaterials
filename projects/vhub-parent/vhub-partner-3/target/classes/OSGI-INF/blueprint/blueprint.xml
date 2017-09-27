@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.0.0"
+	xmlns:jaxrs="http://cxf.apache.org/blueprint/jaxrs" xmlns:cxf="http://cxf.apache.org/blueprint/core"
+	xmlns:camel="http://camel.apache.org/schema/blueprint" xmlns:camel-cxf="http://camel.apache.org/schema/blueprint/cxf"
+	xsi:schemaLocation="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.0.0 http://aries.apache.org/schemas/blueprint-cm/blueprint-cm-1.0.0.xsd
+	http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint-2.16.3.xsd
+	http://cxf.apache.org/blueprint/jaxrs http://cxf.apache.org/schemas/blueprint/jaxrs.xsd
+http://cxf.apache.org/blueprint/core http://cxf.apache.org/schemas/blueprint/core.xsd
+http://camel.apache.org/schema/blueprint/cxf http://camel.apache.org/schema/cxf/camel-cxf-2.16.3-blueprint.xsd">
+
+
+	<jaxrs:server address="/command3" id="commandBuilderService">
+		<jaxrs:serviceBeans>
+			<ref component-id="commandBuilder" />
+			<ref component-id="commandResponder" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<bean id="commandBuilder"
+		class=" com.virtusa.vhub.partner3.resource.impl.CommandBuilderImpl" />
+	<bean id="commandResponder"
+		class=" com.virtusa.vhub.partner3.resource.impl.FinalResponseHandlerResourceImpl" />
+</blueprint>

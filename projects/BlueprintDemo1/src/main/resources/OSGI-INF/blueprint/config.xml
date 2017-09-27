@@ -1,0 +1,7 @@
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+          
+   
+             <bean id="helloservice" class="com.virtusa.service.impl.HelloWorldImpl" init-method="startup">
+             </bean>
+             <service ref="helloservice" interface="com.virtusa.service.HelloWorld"></service>
+             </blueprint>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"></meta>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+    <meta name="Keywords" content="art-login"></meta>
+    <title>vSeat Seat Management System</title>
+    <link href="/assets/styles/bootstrap.min.css" rel="stylesheet"></link>
+    <link type="text/css" rel="stylesheet" href="/assets/styles/index.css"></link>  
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css"></link>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></link>
+   </head>
+    <body class="backgroundImg">
+    <div class="container-fluid">
+      <div class="col">  
+        <div class="row">
+          <div class=" appname col-sm-6 col-md-6 "> 
+              <i class="material-icons" id="seaticon">airline_seat_recline_normal</i>vSeat <sub id="subscript">Seat Management System</sub>
+            </div>
+          <div class="col-sm-6 col-md-6">
+              <img class="virtusaLogo" src="/assets/images/virtusa_polaris_logo.png"></img>
+            </div>
+	     </div>
+       </div>
+    </div> 
+     <div class="container-fluid">
+       <nav class="navbar navbar-inverse">
+         <div class="navbar-header">
+            <a class="navbar-brand" href="index.html"><i class="fa fa-home" id="homeicon">&nbsp; Home</i></a>
+         </div>
+          </nav>
+      </div>
+        <center>
+        <div class="addseat">
+          <span class="">
+                <button type="button" class="button btn-default " data-dismiss="modal" id="addseatPopup">AddSeat</button>
+                 <button type="button" class="button btn-default " data-dismiss="modal" id="delete">Delete Seat</button>
+           </span>
+                                    
+         </div>
+              </center> 
+               
+                     
+                <div class="modal fade" id="addNewSeat" role="dialog">
+                    <div class="modal-dialog">
+                             <div class="modal-content">
+                                 <div class="modal-header">
+                                     <button type="button" class="close" data-dismiss="modal" >&times;</button>
+                                     <h4 class="modal-title">Add New Seat</h4>
+                                  </div>
+                                <div class="popup modal-body">
+                                   <form>
+                                       <div class="form-group">
+			                               <label for="text" class="label-style control-label">Seat Id</label>
+        	                               <input class="form-control" id="newSeat" type="text" placeholder="DMxxxx" required="required"></input>
+                                        </div>
+             	                       <div class="form-group">
+					                       <label for="text" class="label-style control-label">Block Id</label>
+        	                               <input class="form-control" id="blockId" type="text" required="required"></input>
+                                        </div>
+                                         <div class="form-group" >
+					                         <label  class="label-style">Floor No</label>
+		                                     <input type="text" class="form-control" id="floorNo" required="required"></input>
+                                         </div>
+                                         <div class="form-group" >
+					                         <label  class="label-style">Status</label>
+		                                     <input type="text" class="form-control" id="newstatus" value="Available"  required="required"></input>
+                                         </div>
+		                                </form>
+                                    </div>
+                                  <div class="footer modal-footer">
+                                      <span>
+                                      <button type="button" class="btn btn-default" data-dismiss="modal" id="addSeat" onclick="newSeat()">Add Seat</button>    
+                                        </span>
+                                      </div>
+                                   </div>
+                                </div>
+                            </div>
+                
+<div class="modal fade" id="deleteSeat" role="dialog">
+                    <div class="modal-dialog">
+                             <div class="modal-content">
+                                 <div class="modal-header">
+                                     <button type="button" class="close" data-dismiss="modal" >&times;</button>
+                                     <h4 class="modal-title">Deleting Seat</h4>
+                                  </div>
+                                <div class="popup modal-body">
+                                   <form>
+                                       <div class="form-group has-feedback">
+			                               <label for="SeatId" class="label-style control-label">Seat Id</label>
+        	                               <input class="form-control" id="delseatname" type="text" name="SeatId" placeholder="DMxxxx" required="required"></input>
+        	                               <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+										<span class="help-block with-errors"></span>
+                                        </div>
+             	                      </form>
+             	                      
+                                    </div>
+                                  <div class="footer modal-footer">
+                                      <span>
+                                      <button type="button" class="btn btn-default" data-dismiss="modal" id="deleteseat">Delete</button>    
+                                        </span>
+                                      </div>
+                                   </div>
+                                </div>
+                            </div>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="/js/app/bootstrap.min.js"></script>
+     <script type="text/javascript" src="/js/app/component/manageSeat.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+     <script type="text/javascript" src="/js/app/component/searchSeatDetails.js"></script>
+     <script type="text/javascript" src="/js/app/component/validateEntries.js"></script>
+      <script type="text/javascript" src="/js/app/loginvalidation.js"></script> 
+      
+      <script src="/js/app/component/jquery-1.12.0.min.js"></script>
+   <script src="/js/app/component/validator.min.js"></script>
+   <script src="/js/app/component/bootstrap.min.js"></script>
+      
+      
+      
+      
+    <script>
+    $(document).ready(function()
+ 	       {   
+    	 		showTable();
+		    	addSeat();
+		        newSeat();
+		        deletePop();
+		    	deleteSeat();
+		   });
+    </script>
+    </body>
+    </html>

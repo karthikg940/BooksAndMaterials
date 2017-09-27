@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.jboss.org/dtd/hibernate/hibernate-mapping.dtd">
+
+<hibernate-mapping>
+
+	<class name="com.lly.audit.eda.entity.LoadAuditEntity"
+			 table="EDA_POC_LOAD_AUDIT">
+
+		<id name="auditId" column="AUDIT_ID">
+			<generator class="native" />
+		</id>
+		<property name="sourcePartnerId" column="SOURCE_PARTNER_ID" length="30" />
+		<property name="sourcePartnerName" column="SOURCE_PARTNER_NAME" length="50" />
+		<property name="camelMsgId" column="CAMEL_MSG_ID" length="50" />
+		<property name="payloadType" column="PAYLOAD_TYPE" length="10" />
+		<property name="payload" column="PAYLOAD" type="clob" length="15000"/>
+		<property name="auditStep" column="AUDIT_STEP" length="10" />
+		<property name="loadStatus" column="LOAD_STATUS" length="10" />
+		<property name="loadStartDateTime" column="LOAD_END_DATE_TIME" length="8" />
+		<property name="loadEndDateTime" column="LOAD_END_DATE_TIME" />
+		<property name="loadDuration" length="10" />
+		<property name="createBy" length="10" />
+		<property name="createTimestamp" />
+	</class>
+
+</hibernate-mapping>

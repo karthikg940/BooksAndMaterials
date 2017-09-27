@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.virtusa.vhub.hub.test.CommandInRouteTest
+-------------------------------------------------------------------------------
+Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.257 sec - in com.virtusa.vhub.hub.test.CommandInRouteTest

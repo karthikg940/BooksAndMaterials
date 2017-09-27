@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>  
+    <meta charset="utf-8"></meta>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+    <meta name="Keywords" content="art-login"></meta>
+    <title>vSeat Seat Management System</title>
+    <link href="/assets/styles/bootstrap.min.css" rel="stylesheet"></link>
+    <link type="text/css" rel="stylesheet" href="/assets/styles/index.css"></link>  
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css"></link>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></link>
+    <link rel="stylesheet" href="/assets/styles/jquery.dataTables.min.css"></link>
+	
+ </head>
+<body class="backgroundImg">
+    <div class="container-fluid">
+      <div class="col">  
+        <div class="row">
+          <div class="col-sm-6 col-md-6 appname"> 
+              <i class="material-icons" id="seaticon">airline_seat_recline_normal</i>vSeat <sub id="subscript">Seat Management System</sub>
+            </div>
+          <div class="col-sm-6 col-md-6">
+              <img class="virtusaLogo" src="/assets/images/virtusa_polaris_logo.png"></img>
+            </div>
+	     </div>
+       </div>
+    </div> 
+     <div class="container-fluid">
+       <nav class="navbar navbar-inverse">
+         <div class="navbar-header">
+            <a class="navbar-brand" href="#"><i class="fa fa-home" id="homeicon">&nbsp; Home</i></a>
+         </div>
+         <ul class="nav navbar-nav">
+      <li><a href="manageSeat.html" id="addNewSeat">Manage Seat</a></li>
+      
+    </ul>
+          </nav>
+      </div>
+      <div class="container-fluid">
+          <div class="well " id="indexwell">
+              <h1>Selection Info <i class="fa fa-info-circle heading"></i></h1>
+              <br></br>
+              <br></br>
+          <form class="form-horizontal" role="form">
+            <div class="form-group">
+               <label class="control-label col-md-2">BLOCK</label>
+           			<div class="col-sm-2">
+						<select class="form-control block" id="block">
+							<option></option>
+							<option th:each="state : ${block}" th:value="${state}"
+								th:text="${state}"></option>
+						</select>
+					</div>
+           </div> 
+           <div class="form-group">
+				<label class="control-label col-sm-2">FLOOR</label>
+					<div class="col-sm-2">
+						<select class="form-control" id="floor">
+							<option></option>	
+						</select>
+					</div>
+		  </div>
+     <div class=" row">
+      <div class="form-group">
+         <label class="control-label col-md-2">SEAT </label><br></br>
+      </div>
+    </div>
+    <div class=" row">
+         <div class="col-md-2"></div>
+         <div class="col-md-10">
+            <form class="seat form-inline">
+               <div class="col-md-2">
+                 <div class="form-group">
+                    <label >From </label>
+                    <input type="text" class="form-control" id="startseat"></input>
+                 </div>   
+              </div>  
+             
+           <div class="seat col-md-2">
+             <div class="form-group">
+                   <label > To</label>
+              <input type="text" class="form-control" id="endseat"></input>
+               </div>
+          </div>
+       </form>
+      </div> 
+ </div>
+      <div class="searchbtn">
+          <button type="submit" class="btn btn-default searchbtn" id="search">Search</button> 
+      </div>        
+   <br></br>
+   <br></br>            
+   <center>
+      <tbody id="tbody">
+	          <tr id="displayDetails">
+	                <div class="modal fade" id="detailsModal" role="dialog">
+	                  <div class="modal-dialog">
+	                 <!-- Modal content-->
+	                     <div class="modal-content">
+	                         <div class="modal-header">
+	                           <button type="button" class="close" data-dismiss="modal">&times;</button>
+	                           <h4 class="modal-title">Employee Details</h4>
+	                          </div>
+	                         <div class=" popup modal-body">
+	                           <form>
+                                       <div class="form-group">
+			                               <label for="text" class="control-label labelstyle">Seat_ID</label>
+        	                               <input type="text" class="form-control" id="displayPopSid"></input>
+                                        </div>
+             	                       <div class="form-group">
+					                       <label for="text" class="control-label labelstyle">Employee ID</label>
+        	                               <input type="text"  class="form-control" id="displayPopEid"></input>
+                                        </div>
+                                         <div class="form-group" >
+					                         <label  class="labelstyle">Employee Name</label>
+		                                     <input type="text" class="form-control" id="displayPopEname"></input>
+                                         </div>
+                                         <div class="form-group" >
+					                         <label class="labelstyle">Project</label>
+		                                     <input type="text" class="form-control" id="displayPopProject"></input>
+                                         </div>
+		                               <div class="form-group">
+					                         <label  class="labelstyle">Email</label>
+		                                     <input type="text" class="form-control" id="displayPopEmail"></input>
+                                         </div>
+                                      </form>
+	                          </div>
+	                        <div class="modal-footer">
+	                           <button type="button" class="btn btn-default" data-dismiss="modal" disabled="disabled" id="allocate" >Allocate</button>
+	                            <button type="button" class="btn btn-default btnstyle dealloc" data-dismiss="modal" id="deallocate" >Deallocate</button>
+	                         </div>
+	                       </div>
+	                   </div>
+	                </div>
+	            </tr>
+	           
+          <tr id="displayReg">
+               <div class="modal fade" id="registrationModal" role="dialog">
+                    <div class="modal-dialog">
+                          <!-- Modal content-->
+                             <div class="modal-content">
+                                 <div class="modal-header">
+                                     <button type="button" class="close" data-dismiss="modal" >&times;</button>
+                                     <h4 class="modal-title">Allocate New Seat</h4>
+                                  </div>
+                                <div class=" popup modal-body">
+                                   <form>
+                                       <div class="form-group">
+			                               <label for="text" class="labelstyle">Seat_ID</label>
+        	                               <input class="form-control" id="regSeatId" type="text"></input>
+                                        </div>
+             	                       <div class="form-group">
+					                       <label for="text" class="labelstyle">Employee ID</label>
+        	                               <input class="form-control" id="regEmpId" type="text"></input>
+                                        </div>
+                                         <div class="form-group" >
+					                         <label  class="labelstyle">Start Date</label>
+		                                     <input type="date" class="form-control" id="regStartDate"></input>
+                                         </div>
+		                               <div class="form-group">
+					                         <label  class="labelstyle">End  </label>
+		                                     <input type="date" class="form-control" id="regEndDate"></input>
+                                         </div>
+                                      </form>
+                                    </div>
+                                  <div class="footer modal-footer">
+                                      <span class="">
+                                          <button type="button" class="btn btn-default" data-dismiss="modal" id="allocateSeat">Allocate</button>
+                                        </span>
+                                      <span>
+                                             <button type="button" class="btn btn-default" data-dismiss="modal" >Cancel</button>
+                                        </span>
+                                      </div>
+                                   </div>
+                                </div>
+                            </div>
+                         </tr>
+                     </tbody>
+             
+                </center> 
+             </form>   
+             <table id="displaySeat" class="table">
+             </table> 
+          </div>
+       </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="/js/app/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/app/component/searchSeatDetails.js"></script>
+    <script type="text/javascript" src="/js/app/component/displaySeatDetails.js"></script> 
+    <script type="text/javascript" src="/js/app/component/validateEntries.js"></script>  
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="/js/lib/jquery.dataTables.js"></script>
+	<script type="text/javascript" src="/js/app/loginvalidation.js"></script>
+	<script type="text/javascript" src="/js/app/component/addNewSeat.js"></script>
+	<script type="text/javascript" src="/js/app/component/validateEntries.js"></script> 
+	<script type="text/javascript" src="/js/lib/datatab.js"></script>
+	<script>
+	       $(document).ready(function()
+	       {   
+	    	      showTable();
+	    	      findFloorByBlock();
+	    		  validateUserEntry();
+	    		  seatAction();
+	    		  allocateNewSeat();
+	    		  deAllocate();
+	    		  clear();
+	    		  dataTable(); 
+	    		  addSeat();
+	       });
+	</script> 
+   </body>
+</html>

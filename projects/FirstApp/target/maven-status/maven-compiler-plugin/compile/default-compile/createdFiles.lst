@@ -1,0 +1,5 @@
+com\virtusa\firstapp\service\UserService.class
+com\virtusa\firstapp\controller\HomeController.class
+com\virtusa\firstapp\bean\User.class
+com\virtusa\firstapp\dao\UserDao.class
+com\virtusa\firstapp\controller\UserController.class

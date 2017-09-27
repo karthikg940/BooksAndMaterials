@@ -1,0 +1,3 @@
+com\virtusa\training\startup\osgi\Activator.class
+com\virtusa\training\startup\osgi\service\HelloWorld.class
+com\virtusa\training\startup\osgi\service\impl\HelloWorldImpl.class

@@ -1,0 +1,3 @@
+com\virtusa\audit\eda\entity\MyProcessor.class
+com\virtusa\audit\eda\entity\AuditEntityConverter.class
+com\virtusa\audit\eda\entity\LoadAuditEntity.class

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.0.0"
+	xmlns:jaxrs="http://cxf.apache.org/blueprint/jaxrs" xmlns:cxf="http://cxf.apache.org/blueprint/core"
+	xmlns:camel="http://camel.apache.org/schema/blueprint" xmlns:camel-cxf="http://camel.apache.org/schema/blueprint/cxf"
+	xsi:schemaLocation="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.0.0 http://aries.apache.org/schemas/blueprint-cm/blueprint-cm-1.0.0.xsd
+	http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint-2.16.3.xsd
+	http://cxf.apache.org/blueprint/jaxrs http://cxf.apache.org/schemas/blueprint/jaxrs.xsd
+http://cxf.apache.org/blueprint/core http://cxf.apache.org/schemas/blueprint/core.xsd
+http://camel.apache.org/schema/blueprint/cxf http://camel.apache.org/schema/cxf/camel-cxf-2.16.3-blueprint.xsd">
+
+	<!-- this is the JDBC data source which uses an in-memory only Apache Derby 
+		database -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@10.5.112.106:1521:XE" />
+		<property name="username" value="LLY_EDA" />
+		<property name="password" value="LLY_EDA" />
+	</bean>
+
+	<bean id="hibernate"
+		class="org.apacheextras.camel.component.hibernate.HibernateComponent">
+		<property name="sessionFactory" ref="sessionFactory" />
+		<property name="transactionStrategy" ref="springTransactionStrategy" />
+	</bean>
+
+	<!-- setup hibernate and spring to use transaction -->
+	<bean id="springTransactionStrategy"
+		class="org.apacheextras.camel.component.hibernate.SpringTransactionStrategy">
+		<constructor-arg ref="sessionFactory" />
+		<constructor-arg ref="transactionTemplate" />
+	</bean>
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="transactionTemplate"
+		class="org.springframework.transaction.support.TransactionTemplate">
+		<property name="transactionManager" ref="transactionManager" />
+	</bean>
+
+	<!-- setup Hibernate session factory -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<!-- here we define the hibernate mapping files we use -->
+		<property name="mappingResources">
+			<list>
+				<value>com.lly.audit.eda.entity.LoadAuditEntity</value>
+			</list>
+		</property>
+
+		<!-- and here we have additional hibernate options -->
+		<property name="hibernateProperties">
+			<value>
+				hibernate.dialect=org.hibernate.dialect.DerbyTenSevenDialect
+				hibernate.hbm2ddl.auto=update
+			</value>
+		</property>
+	</bean>
+
+	<bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+		<property name="brokerURL" value="tcp://localhost:61616" />
+		<property name="userName" value="karaf" />
+		<property name="password" value="karaf" />
+	</bean>
+
+	<bean id="jmscomp" class="org.apache.camel.component.jms.JmsComponent">
+		<property name="connectionFactory" ref="connectionFactory" />
+	</bean>
+
+
+	<bean id="jaxbContext" class="javax.xml.bind.JAXBContext"
+		factory-method="newInstance">
+		<argument>
+			<list>
+				<value>com.lly.audit.eda.entity.LoadAuditEntity</value>
+			</list>
+		</argument>
+	</bean>
+
+	<bean id="jaxbDataFormat" class="org.apache.camel.converter.jaxb.JaxbDataFormat">
+		<argument ref="jaxbContext" />
+	</bean>
+
+	<camelContext id="commandRouterContext"
+		xmlns="http://camel.apache.org/schema/blueprint">
+		<camel:route>
+			<camel:from uri="jmscomp:TPO-AUDIT-LOG-QUEUE" />
+			<camel:unmarshal ref="jaxbDataFormat" />
+			<camel:to uri="hibernate:com.lly.audit.eda.entity.LoadAuditEntity" />
+			<camel:log message="Persisted Audit information with an id ${body.auditId}" />
+		</camel:route>
+	</camelContext>
+
+
+</blueprint>
+ 

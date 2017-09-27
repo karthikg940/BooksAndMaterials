@@ -1,0 +1,116 @@
+<
+style type ="text/css">body {
+	padding-top: 60px;
+	padding-bottom: 50px;
+	scrolling: no;
+	background-color: white;
+}
+#abc{
+	position: relative;
+	top: 100px;
+}
+.sidebar-nav {
+	padding: 9px 0;
+}
+.navbar-custom {
+    background-color:#009688
+}
+.navbar-inner {
+  min-height: 40px;
+  padding-right: 20px;
+  padding-left: 20px;
+  background-color: #009688;
+}
+
+@media ( max-width : 980px) {
+	/* Enable use of floated navbar text */
+	.navbar-text.pull-right {
+		float: none;
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+}
+.brand{
+	background-color: #009688;
+	color: #009688;	
+}
+#my-div {
+	width: 800px;
+	height: 1400px;
+	overflow: hidden;
+	position: absolute;
+	top: 100px;
+	left: 330px;
+}
+
+.myframe {
+	position: fixed;
+	top: 100px;
+	right: 50px;
+	width: 960px;
+	height: 800px;
+}
+
+#wrap {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	/* Negative indent footer by it's height */
+	margin: 0 auto -60px;
+}
+
+/* Set the fixed height of the footer here */
+#push,#footer {
+	position: relative;
+	top: 400px;
+	height: 80px;
+	background-color: #f5f5f5;
+	text-align: center;
+}
+
+/* Lastly, apply responsive CSS fixes as necessary */
+.container {
+	width: auto;
+	max-width: 680px;
+}
+
+.container .credit {
+	margin: 20px 0;
+}
+
+}
+/* Add student
+      -------------------------------------------------- */
+.form-signin {
+	max-width: 300px;
+	padding: 19px 29px 29px;
+	margin: 0 auto 20px;
+	background-color: #f5f5f5;
+	border: 1px solid #e5e5e5;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+	-moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+	box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+}
+
+.form-signin .form-signin-heading,.form-signin .checkbox {
+	margin-bottom: 10px;
+}
+
+.form-signin input[type="text"],.form-signin input[type="password"] {
+	font-size: 16px;
+	height: auto;
+	margin-bottom: 15px;
+	padding: 7px 9px;
+}
+
+.student_course {
+	top: 120px;
+	left: 400px;
+	width: 700px;
+}
+</
+style
+>

@@ -1,0 +1,5 @@
+com\virtusa\vhub\partner2\resource\impl\CommandBuilderImpl.class
+com\virtusa\vhub\partner2\resource\interfac\FinalResponseHandlerResource.class
+com\virtusa\vhub\partner2\resource\interfac\CommandBuilder.class
+com\virtusa\vhub\partner2\resource\impl\CommandBuilderImpl$CommandCatalog.class
+com\virtusa\vhub\partner2\resource\impl\FinalResponseHandlerResourceImpl.class

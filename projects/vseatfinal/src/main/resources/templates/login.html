@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>login page</title>
+
+    <!-- Bootstrap -->
+  <link href="/assets/styles/bootstrap.min.css" rel="stylesheet"></link>
+    <link type="text/css" rel="stylesheet" href="/assets/styles/index.css"></link>  
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css"></link>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></link>
+   
+  </head>
+  <body>
+    <div class="maincont container">
+    <div class="container-fluid">
+      <div class="col">  
+        <div class="row">
+          <div class="col-sm-6 col-md-6 appname"> 
+              <i class="material-icons" id="seaticon">airline_seat_recline_normal</i>vSeat <sub id="subscript"><em>Seat Management System</em></sub>
+               
+            </div>
+          <div class="col-sm-6 col-md-6">
+              <img class="virtusaLogo" src="/assets/images/virtusa_polaris_logo.png"></img>
+            </div>
+	     </div>
+       </div>
+    </div> 
+        <div class="row vertical-offset-100">
+            <div class=" col-md-3">
+               
+               </div>
+    	     <div class="col-md-4 col-md-offset-4">
+    		    <div class="logindiv panel panel-default login">
+			  	  <div class="panel-heading">                            
+                    <h3 class="panel-title user-row"> Login</h3> 
+			      </div>
+			  	<div class="panel-body">
+			        <form accept-charset="UTF-8"   id="form_id" method="post" name="form">
+			    	   <div class="form-group">
+			    	      <input class="form-control" placeholder="username"  type="text"  id="uname" required="required"></input>
+			    	    </div>
+			    		<div class="form-group">
+			    			<input class="form-control" placeholder="password"  type="password"   id="pass" required="required"></input>
+			    		</div>
+                        <div class="rememberme form-group">
+			    		  <input class="loginbtn btn btn-lg  btn-block" type="button" value="Login" id="submit" onclick="validate()"></input>
+                        </div>
+                        </form>
+			    </div>
+			</div>
+      </div>
+    </div>
+</div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="/js/app/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/app/loginvalidation.js"></script> 
+  </body>
+</html>

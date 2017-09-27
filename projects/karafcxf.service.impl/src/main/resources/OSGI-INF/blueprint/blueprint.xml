@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+	<service interface="com.virtusa.lly.karafcxf.service.impl.HelloService"
+		ref="helloService" id="helloWorldService" />
+	<bean id="helloService" class=" com.virtusa.lly.karafcxf.service.impl.HelloServiceImpl" />
+</blueprint>

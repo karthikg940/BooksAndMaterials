@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+	<property name="now" value="now()" dbms="mysql,h2" />
+	<property name="now" value="current_timestamp" dbms="postgresql" />
+
+	
+	<changeSet id="20160603194100" author="vseat">
+	
+		<createTable tableName="EMPLOYEE">
+			<column name="id" type="bigint">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="empName" type="varchar(100)" />
+			<column name="project" type="varchar(100)"/>
+			<column name="email" type="varchar(100)"/>
+		    <column name="designation" type="varchar(100)" />
+		</createTable>
+		
+		<createTable tableName="BLOCK">
+				<column name="id" type="bigint">
+					<constraints primaryKey="true" nullable="false" />
+				</column>
+		</createTable>
+	
+		<createTable tableName="FLOOR">
+				<column name="id" type="bigint">
+					<constraints primaryKey="true" nullable="false" />
+				</column>
+		        <column name="blockNo" type="bigint"/>
+		</createTable>
+		
+		<createTable tableName="SEAT">
+				<column name="seatName" type="varchar(30)">
+					<constraints primaryKey="true" nullable="false"/>
+				</column>
+				<column name="blockNo" type="bigint"/>
+				<column name="floorNo" type="bigint"/>
+				<column name="status" type="varchar(20)" />
+		</createTable>
+	
+		<createTable tableName="PROJECT">
+				<column name="projectName" type="varchar(100)">
+					<constraints primaryKey="true" nullable="false"/>
+				</column>
+				<column name="managerId" type="bigint"/>
+		</createTable>	
+		
+		<createTable tableName="ALLOCATION">
+				<column name="id" type="bigint" autoIncrement="true">
+					<constraints primaryKey="true" nullable="false" />
+				</column>
+				<column name="empId" type="bigint">
+					<constraints unique="true" nullable="false" />
+				</column>
+				<column name="seatName" type="varchar(30)"/>
+				<column name="startDate" type="date" />
+				<column name="endDate" type="date" />
+				<column name="projectName" type="varchar(100)"/>
+						
+		</createTable>
+		
+		
+		
+	    <addForeignKeyConstraint baseColumnNames="project"
+			baseTableName="EMPLOYEE" constraintName="fk_proj"
+			referencedColumnNames="projectName" referencedTableName="PROJECT"/>
+		  
+	   <addForeignKeyConstraint baseColumnNames="managerId"
+			baseTableName="PROJECT" constraintName="fk_mgrId"
+			referencedColumnNames="id" referencedTableName="EMPLOYEE"/>
+	
+		<addForeignKeyConstraint baseColumnNames="seatName"
+			baseTableName="ALLOCATION" constraintName="fk_seatName"
+			referencedColumnNames="seatName" referencedTableName="SEAT"/>
+			
+		<addForeignKeyConstraint baseColumnNames="empId"
+			baseTableName="ALLOCATION" constraintName="fk_seat_emp"
+			referencedColumnNames="id" referencedTableName="EMPLOYEE"/>
+			
+		<addForeignKeyConstraint baseColumnNames="projectName"
+			baseTableName="ALLOCATION" constraintName="fk_projectName"
+			referencedColumnNames="projectName" referencedTableName="PROJECT"/>
+			
+		<addForeignKeyConstraint baseColumnNames="blockNo"
+			baseTableName="SEAT" constraintName="fk_block"
+			referencedColumnNames="id" referencedTableName="BLOCK"/>
+			
+		<addForeignKeyConstraint baseColumnNames="floorNo"
+			baseTableName="SEAT" constraintName="fk_floor"
+			referencedColumnNames="id" referencedTableName="FLOOR"/>
+			
+		<addForeignKeyConstraint baseColumnNames="blockNo"
+			baseTableName="FLOOR" constraintName="fk_FlrBlk"
+			referencedColumnNames="id" referencedTableName="BLOCK"/>
+			
+	</changeSet>
+</databaseChangeLog>

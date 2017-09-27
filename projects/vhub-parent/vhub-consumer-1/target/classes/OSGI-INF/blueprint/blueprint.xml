@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.0.0"
+	xmlns:jaxrs="http://cxf.apache.org/blueprint/jaxrs" xmlns:cxf="http://cxf.apache.org/blueprint/core"
+	xmlns:camel="http://camel.apache.org/schema/blueprint" xmlns:camel-cxf="http://camel.apache.org/schema/blueprint/cxf"
+	xsi:schemaLocation="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.0.0 http://aries.apache.org/schemas/blueprint-cm/blueprint-cm-1.0.0.xsd
+	http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint-2.16.3.xsd
+	http://cxf.apache.org/blueprint/jaxrs http://cxf.apache.org/schemas/blueprint/jaxrs.xsd
+http://cxf.apache.org/blueprint/core http://cxf.apache.org/schemas/blueprint/core.xsd
+http://camel.apache.org/schema/blueprint/cxf http://camel.apache.org/schema/cxf/camel-cxf-2.16.3-blueprint.xsd">
+
+
+	<bean id="commandExecutor" class="com.virtusa.vhub.consumer1.CommandExecutorImpl"
+		init-method="execute">
+		<property name="connectionFactory" ref="connectionFactory" />
+		<property name="queue" ref="queue" />
+	</bean>
+
+	<bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+		<property name="brokerURL" value="tcp://localhost:61616" />
+		<property name="userName" value="karaf" />
+		<property name="password" value="karaf" />
+	</bean>
+	<!-- <bean id="AMQconnectionFactory" class="com.virtusa.vhub.consumer1.CommandSender">
+		<property name="AMQconnectionFactory" ref="connectionFactory" />
+		</bean> -->
+	
+
+	<bean id="queue" class="org.apache.activemq.command.ActiveMQQueue">
+		<argument value="VHUB.COMMAND.CONS1.REQ" />
+	</bean>
+	<!-- <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+	<property name="connectionFactory" ref="connectionFactory" />
+	</bean>
+	<bean id="cmdSender" class="com.virtusa.vhub.consumer1.CommandSender">
+		<property name="jmsTemplate" ref="jmsTemplate"></property>
+	</bean> -->
+</blueprint>

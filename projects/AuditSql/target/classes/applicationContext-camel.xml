@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:camel="http://camel.apache.org/schema/spring"
+	xsi:schemaLocation="http://www.springframework.org/schema/blueprint
+	
+	http://www.springframework.org/schema/beans/spring-blueprint.xsd          
+	http://camel.apache.org/schema/spring 
+	http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+	<bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+		<property name="brokerURL" value="tcp://localhost:61616" />
+		<property name="userName" value="admin" />
+		<property name="password" value="admin" />
+	</bean>
+
+	<bean id="jmscomp" class="org.apache.camel.component.jms.JmsComponent">
+		<property name="connectionFactory" ref="connectionFactory" />
+	</bean>
+	
+
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/test" />
+		<property name="username" value="root" />
+		<property name="password" value="root" />
+	</bean>
+
+
+	<!-- configure the Camel SQL component to use the JDBC data source -->
+	<bean id="sqlComponent" class="org.apache.camel.component.sql.SqlComponent">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<bean id="topicBean" class="com.virtusa.service.NewTopicBean" />
+
+	<!-- here is Camel configured with a number of routes -->
+	<camelContext xmlns="http://camel.apache.org/schema/blueprint">
+
+		<!-- use Camel property placeholder loaded from the given file -->
+<!-- 		<propertyPlaceholder id="placeholder" location="classpath:sql.properties" /> -->
+
+		<!-- route that generate new orders and insert them in the database -->
+		<route id="generateOrder-route">
+			<from uri="jmscomp:LLY.TRAINING.MYSQL.IN" />
+			<transform>
+				<method ref="topicBean" method="insert" />
+			</transform>
+			<to uri="sqlComponent:insert into NewTopic(TopicId, TopicName, url, ModuleId, CreateDate) VALUES
+(:#TopicId, :#TopicName, :#url, :#ModuleId, :#CreateDate)" />
+			<log message="Inserted new NewTopic ${body[TopicId]}" />
+		</route>
+
+		<!--
+			route that process the NewTopics by picking up new rows from the
+			database and when done processing then update the row to mark it as
+			processed
+		-->
+<!-- 		<route id="processNewTopic-route"> -->
+<!-- 			<from uri="sqlComponent:{{sql.selectNewTopic}}? -->
+<!-- 						consumer.onConsume={{sql.markNewTopic}}" /> -->
+<!-- 			<to uri="bean:topicBean?method=processNewTopic" /> -->
+<!-- 			<log message="${body}" /> -->
+<!-- 			<log message="Updated new NewTopic "/> -->
+<!-- 		</route> -->
+
+	</camelContext>
+</blueprint>
